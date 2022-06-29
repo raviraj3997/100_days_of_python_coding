@@ -1,8 +1,9 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 import random
 
 tim = Turtle()
 screen = Screen()
+tim.speed(0)
 tim.shape('turtle')
 tim.color("green")
 color_list = ['alice blue', 'AliceBlue', 'antique white', 'AntiqueWhite', 'AntiqueWhite4', 'aquamarine', 'aquamarine1',
@@ -51,8 +52,20 @@ for number_edges in range(3, 20):
 
 
 # ----------------------------------
-# drawing Random Movement of the turtle.
+# drawing Random walk of the turtle.
 # ----------------------------------
+angles = [0, 90, 180, 270]
 
+
+def step():
+    tim.forward(25)
+    next_move = random.choice([tim.lt, tim.rt])
+    next_move(random.choice(angles))
+    tim.color(random.choice(color_list))
+
+
+tim.pensize(10)
+for _ in range(100):
+    step()
 
 screen.exitonclick()
